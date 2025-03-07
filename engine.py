@@ -1,3 +1,5 @@
+import random
+
 ticker_list = []
 buy_list = []
 sell_list = []
@@ -11,6 +13,15 @@ def addOrder(order_type, ticker_symbol, quantity, price):
             buy_list.insert(0, [ticker_symbol, quantity, price])
         elif order_type.lower() == "sell":
             sell_list.insert(0, [ticker_symbol, quantity, price])
+
+def wrapper(ticker_symbol):
+    curr_buy_quantity = random.randint(1, 10) * 100
+    curr_sell_quantity = random.randint(1, 10) * 100
+    curr_buy_price = random.randint(1, 200)
+    curr_sell_price = random.randint(1, 200)
+
+    addOrder("buy", ticker_symbol, curr_buy_quantity, curr_buy_price)
+    addOrder("sell", ticker_symbol, curr_sell_quantity, curr_sell_price)
 
 
 # Return matching sell order
